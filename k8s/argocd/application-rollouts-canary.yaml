@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devops-info-service-rollouts-canary
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/egraPA006/DevOps-Core-Course.git
+    targetRevision: lab14
+    path: k8s/devops-info-service
+    helm:
+      releaseName: devops-info-canary
+      valueFiles:
+        - values-canary.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rollouts-canary
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
