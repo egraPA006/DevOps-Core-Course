@@ -1,0 +1,9 @@
+common_packages:
+  - python3-pip
+  - curl
+  - git
+  - vim
+  - htop
+
+# Optional user accounts to manage with the common role
+common_users: []
