@@ -1,1 +1,7 @@
 test
+*.retry
+.vault_pass
+.env
+.venv
+monitoring/data/*
+!monitoring/data/.gitkeep

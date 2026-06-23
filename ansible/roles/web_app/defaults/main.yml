@@ -1,0 +1,22 @@
+---
+# Application metadata
+web_app_name: "{{ app_name | default('devops-app') }}"
+web_app_container_name: "{{ app_container_name | default(web_app_name) }}"
+web_app_docker_image: "{{ docker_image | default('your_dockerhub_username/devops-info-service') }}"
+web_app_docker_tag: "{{ docker_tag | default(docker_image_tag | default('latest')) }}"
+web_app_port: "{{ app_port | default(8000) }}"
+web_app_internal_port: "{{ app_internal_port | default(8000) }}"
+web_app_restart_policy: "{{ restart_policy | default('unless-stopped') }}"
+web_app_healthcheck_endpoint: "{{ app_healthcheck_endpoint | default('/health') }}"
+
+# Compose configuration
+web_app_compose_project_dir: "{{ compose_project_dir | default('/opt/' ~ web_app_name) }}"
+web_app_docker_compose_pull: "{{ docker_compose_pull | default('always') }}"  # valid values: always, missing, never, policy
+web_app_environment: {}
+
+# Registry credentials (override with Vault as needed)
+web_app_dockerhub_username: "{{ dockerhub_username | default('') }}"
+web_app_dockerhub_password: "{{ dockerhub_password | default('') }}"
+
+# Wipe control
+web_app_wipe: false  # Set to true alongside --tags web_app_wipe to remove the app
