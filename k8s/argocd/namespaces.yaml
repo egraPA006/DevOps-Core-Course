@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+  labels:
+    app.kubernetes.io/part-of: devops-core-course
+    environment: dev
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod
+  labels:
+    app.kubernetes.io/part-of: devops-core-course
+    environment: prod
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rollouts-canary
+  labels:
+    app.kubernetes.io/part-of: devops-core-course
+    environment: rollouts-canary
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rollouts-bluegreen
+  labels:
+    app.kubernetes.io/part-of: devops-core-course
+    environment: rollouts-bluegreen
